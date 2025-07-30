@@ -1,6 +1,6 @@
 # ROS2 LiDAR Object Follower
 
-This project demonstrates LiDAR based object following in a differential drive robot simulation using ROS 2. Package will search for the nearest obstacle detected in LaserScan readings and make the robot follow it. Check out the complete simulation [here](https://youtu.be/btLDHNtah-4).
+This project demonstrates LiDAR based object following in a differential drive robot using Gazebo and ROS 2. Package will search for the nearest obstacle detected in LaserScan readings and make the robot follow it. Check out the complete simulation [here](https://youtu.be/btLDHNtah-4).
 
 ## System Requirements
 

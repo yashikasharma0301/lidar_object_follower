@@ -28,6 +28,7 @@ private:
   double angular_range = 0.17;
   double min_distance = std::numeric_limits<double>::max();
   int min_index = -1;
+  double stop_dist = 0.2;
   geometry_msgs::msg::Twist cmd;
 
   void scan_callback(const sensor_msgs::msg::LaserScan & msg)
@@ -40,6 +41,7 @@ private:
 
       for (size_t i = 0; i < msg.ranges.size(); ++i) {
         double range = msg.ranges[i];
+        
         if (std::isfinite(range) &&
             range > 0.0 &&
             range >= msg.range_min &&
@@ -51,12 +53,23 @@ private:
           }
         }
       }
-
     if (min_index != -1)
     {
+      
       if((msg.angle_min + msg.angle_increment * min_index)<angular_range && (msg.angle_min + msg.angle_increment * min_index)>-angular_range)
       {
-        cmd.linear.x = (min_distance - msg.range_min);
+        if(min_distance<stop_dist)
+        {
+         cmd.linear.x = 0;
+        cmd.linear.y = 0;
+        cmd.linear.z = 0;
+        cmd.angular.x = 0;
+        cmd.angular.y = 0;
+        cmd.angular.z = 0;
+        publisher_->publish(cmd);
+        }
+        else{
+        cmd.linear.x = 0.5;
         cmd.linear.y = 0;
         cmd.linear.z = 0;
         cmd.angular.x = 0;
@@ -65,8 +78,9 @@ private:
         publisher_->publish(cmd);
         RCLCPP_INFO(this->get_logger(), 
                    "Object detected at distance: %.2f m", 
-                   (min_distance - msg.range_min));
+                   (min_distance));
                    return;
+        }
       }
       else{
         cmd.linear.x = 0;
@@ -74,15 +88,17 @@ private:
         cmd.linear.z = 0;
         cmd.angular.x = 0;
         cmd.angular.y = 0;
-        cmd.angular.z = (msg.angle_min + msg.angle_increment * min_index);
+        cmd.angular.z = (((msg.angle_min + msg.angle_increment * min_index)>0)?0.5:-0.5);
         publisher_->publish(cmd);
         RCLCPP_INFO(this->get_logger(), 
                    "Object detected at angle: %.2f radian", 
                    (msg.angle_min + msg.angle_increment * min_index));
+
                    return;
       }
     }
   }
+  
 };
 
 int main(int argc, char * argv[])

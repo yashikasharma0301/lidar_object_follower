@@ -40,14 +40,11 @@ private:
 
       for (size_t i = 0; i < msg.ranges.size(); ++i) {
         double range = msg.ranges[i];
-
-        // Check for valid values (not NaN, not infinity, not zero, within valid range)
         if (std::isfinite(range) &&
             range > 0.0 &&
             range >= msg.range_min &&
             range <= msg.range_max)
         {
-          // Find minimum distance
           if (range < min_distance) {
             min_distance = range;
             min_index = static_cast<int>(i);

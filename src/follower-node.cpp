@@ -105,7 +105,6 @@ private:
         cmd.angular.z = 0;
         publisher_->publish(cmd);
   }
-  
 };
 
 int main(int argc, char * argv[])

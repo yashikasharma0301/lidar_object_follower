@@ -60,7 +60,7 @@ private:
       {
         if(min_distance<stop_dist)
         {
-         cmd.linear.x = 0;
+        cmd.linear.x = 0;
         cmd.linear.y = 0;
         cmd.linear.z = 0;
         cmd.angular.x = 0;
@@ -97,6 +97,13 @@ private:
                    return;
       }
     }
+        cmd.linear.x = 0;
+        cmd.linear.y = 0;
+        cmd.linear.z = 0;
+        cmd.angular.x = 0;
+        cmd.angular.y = 0;
+        cmd.angular.z = 0;
+        publisher_->publish(cmd);
   }
   
 };

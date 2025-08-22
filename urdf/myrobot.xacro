@@ -147,7 +147,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="file://$(find lidar-object-follower)/meshes/lidar.dae"/>
+        <mesh filename="file://$(find lidar_object_follower)/meshes/lidar.dae"/>
       </geometry>
     </visual>
     <collision>

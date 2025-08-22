@@ -10,7 +10,7 @@ import xacro
 
 def generate_launch_description():
   
-    pkg_name = 'lidar-object-follower'
+    pkg_name = 'lidar_object_follower'
     xacro_file_name = 'myrobot.xacro'
     world_file_name='world.sdf'
   

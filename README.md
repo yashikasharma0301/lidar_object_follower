@@ -31,7 +31,7 @@ sudo apt install ros-jazzy-robot-state-publisher \
 
 ```bash
 mkdir -p my_ws/src && cd my_ws/src
-git clone https://github.com/yashikasharma0301/lidar-object-follower.git
+git clone https://github.com/yashikasharma0301/lidar_object_follower.git
 ```
 
 2. **Build the Workspace**
@@ -52,7 +52,7 @@ source install/setup.bash
 1. **Launch Robot with LiDAR and Target Object in Gazebo**
 
 ```bash
-ros2 launch lidar-object-follower object-follower.launch.py
+ros2 launch lidar_object_follower object_follower.launch.py
 ```
 <img width="1854" height="1168" alt="image" src="https://github.com/user-attachments/assets/d6909335-a58e-4b75-9db4-4223c28e062d" />
 
@@ -69,7 +69,7 @@ In a new terminal, source the workspace and run the follower node:
 ```bash
 cd my_ws
 source install/setup.bash
-ros2 run lidar-object-follower follower-node
+ros2 run lidar_object_follower follower_node
 ```
 
 Use the Gazebo interface to move the object around. 

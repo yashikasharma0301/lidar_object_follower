@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>lidar-object-follower</name>
+  <name>lidar_object_follower</name>
   <version>0.0.0</version>
   <description>ROS2 package for following the closest object detected using LIDAR</description>
   <maintainer email="yashikasharma0301@gmail.com.com">Yashika Sharma</maintainer>
